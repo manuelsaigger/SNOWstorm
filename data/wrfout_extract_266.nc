@@ -1,0 +1,1 @@
+../../training_data_extended/wrfout_extract/wrfout_extract_266.nc
