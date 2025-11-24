@@ -3,17 +3,15 @@
 
 import numpy as np
 import xarray as xr
-import matplotlib.pyplot as plt
-import matplotlib as mpl
 import scipy
+import torch
 
 import os
-import json
 from netCDF4 import Dataset
 from wrf import getvar, interplevel
 
-import snowstorm_helpers.helpers
-
+import helpers
+import util_funct_meteo
 
 
 ###################
@@ -528,9 +526,9 @@ def interpolate_era_to_dem(field_era, dem_xr, type_dem, input_xr=True, field_era
     
     # extract coordinates of high-resolution dem
     if type_dem == 'tdx':
-        lons_dem, lats_dem = np.meshgrid(dem_hef_xr.lon.values, dem_hef_xr.lat.values)
+        lons_dem, lats_dem = np.meshgrid(dem_xr.lon.values, dem_xr.lat.values)
     elif type_dem == 'wrfles':
-        lons_dem, lats_dem = dem_hef_xr.lon.values, dem_hef_xr.lat.values
+        lons_dem, lats_dem = dem_xr.lon.values, dem_xr.lat.values
     
     # interpolate ERA 5 field to grid of high-resolution dem
     if input_xr:
