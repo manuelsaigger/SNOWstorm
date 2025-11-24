@@ -15,10 +15,9 @@ from wrf import getvar, interplevel
 import torch
 
 import snowstorm_helpers.util_funct_meteo
-import snowstorm_helpers.snowstorm_config
-from snowstorm_helpers.snowstorm_prep_input import get_data_input
+from  snowstorm_helpers import snowstorm_config, helpers, util_funct_meteo
+from snowstorm_helpers.snowstorm_prep_input import get_data_input, get_data_input_snow, get_dem_tdx, get_dem_fourierland, get_dem_wrfles
 from snowstorm_helpers.snowstorm_prep_output import unnorm_data, untrans_data, write_ds_pred
-import snowstorm_helpers.helpers
 
 
 
@@ -199,31 +198,6 @@ def main(path_to_models, path_to_namelists, path_to_in, type_input, num_model_wi
    
     return ds_pred
     
-    
-
-
-
-
-    
- 
-
-
-
-
-
-
-   
- 
-
-
-
-
-
-
-
-
-
-
 
 
 def prepare_model(path_to_models, path_to_namelists, var_model, num_model, eps_model=2000):
